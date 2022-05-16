@@ -1,0 +1,41 @@
+﻿@using ArtSkill_03._2.Domain.Entities
+@model IQueryable<ServiceItem>
+@{
+    TextField textField = ViewBag.TextField;
+
+    ViewBag.Title = textField.MetaTitle;
+    ViewBag.Description = textField.MetaDescription;
+    ViewBag.Keywords = textField.MetaKeywords;
+}
+
+    @if (Model.Any())
+{
+    <div class="major">
+        @{
+            foreach (ServiceItem entity in Model)
+            {
+                <div class="row"> 
+                    <div class="col-4 col-6-medium col-12-small">
+                        <section class="box">
+
+
+                            <a href="#" class="image featured"> <img src="~/images/@entity.TitleImagePath" alt="" class="center"/></a>
+
+
+                            <header>
+                                <h3>@entity.Title</h3>
+                            </header>
+                            <p>@entity.Subtitle</p>
+                            <footer>
+                                <ul class="actions">
+                                    <li><a href="#" class="button alt">Купить</a></li>
+                                </ul>
+                            </footer>
+                            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">Подробнее</a>
+                        </section>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}

@@ -1,0 +1,138 @@
+﻿
+@model TextField
+@{
+    string strTitle = "Редактировать запись";
+    ViewBag.Title = strTitle;
+}
+
+<script src="~/js/ckeditor/ckeditor.js"></script>
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="TextFields" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateAdded" />
+            <input type="hidden" asp-for="CodeWord" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="div-box">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="Text"></label>
+                <textarea asp-for="Text"></textarea>
+                <span asp-validation-for="Text"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="MetaTitle"></label>
+                <input asp-for="MetaTitle" />
+                <span asp-validation-for="MetaTitle"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="MetaDescription"></label>
+                <input asp-for="MetaDescription" />
+                <span asp-validation-for="MetaDescription"></span>
+            </div>
+            <div class="div-box">
+                <label asp-for="MetaKeywords"></label>
+                <input asp-for="MetaKeywords" />
+                <span asp-validation-for="MetaKeywords"></span>
+            </div>
+            <input type="submit" value="Сохранить" />
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    window.onload = function() {
+        var newCKEdit = CKEDITOR.replace('@Html.IdFor(x=>x.Text)');
+        newCKEdit.updateElement();
+    }
+</script>
+
+
+
+@*@model TextField
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>TextField</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodeWord" class="control-label"></label>
+                <input asp-for="CodeWord" class="form-control" />
+                <span asp-validation-for="CodeWord" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Subtitle" class="control-label"></label>
+                <input asp-for="Subtitle" class="form-control" />
+                <span asp-validation-for="Subtitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleImagePath" class="control-label"></label>
+                <input asp-for="TitleImagePath" class="form-control" />
+                <span asp-validation-for="TitleImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaTitle" class="control-label"></label>
+                <input asp-for="MetaTitle" class="form-control" />
+                <span asp-validation-for="MetaTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaKeywords" class="control-label"></label>
+                <input asp-for="MetaKeywords" class="form-control" />
+                <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateAdded" class="control-label"></label>
+                <input asp-for="DateAdded" class="form-control" />
+                <span asp-validation-for="DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>*@
